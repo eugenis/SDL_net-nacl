@@ -2,11 +2,11 @@
 set -e -x
 
 ROOT=${NACL_TOOLCHAIN_ROOT:-$HOME/root/nacl-sdk}
-PATH=$ROOT/bin:$ROOT/nacl64/usr/bin:$PATH
+PATH=$ROOT/bin:$ROOT/x86_64-nacl/usr/bin:$PATH
 
-export SDL_LIBS="-L$ROOT/nacl64/usr/lib -lSDL -lppapi_cpp -lpthread -lm"
-CC=nacl64-gcc AR=nacl64-ar RANLIB=nacl64-ranlib PKG_CONFIG_LIBDIR=$ROOT/nacl64/usr/lib/pkgconfig \
-  ./configure --host=nacl64 --prefix=$ROOT/nacl64/usr --without-x
+export SDL_LIBS="-L$ROOT/x86_64-nacl/usr/lib -lSDL -lppapi_cpp -lpthread -lm"
+CC=x86_64-nacl-gcc AR=x86_64-nacl-ar RANLIB=x86_64-nacl-ranlib PKG_CONFIG_LIBDIR=$ROOT/x86_64-nacl/usr/lib/pkgconfig \
+  ./configure --host=x86_64-nacl --prefix=$ROOT/x86_64-nacl/usr --without-x
 make
 make install
 
